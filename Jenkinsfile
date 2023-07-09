@@ -24,7 +24,10 @@ pipeline {
             }
             post {
                 always {
-                    cucumber '**/target/cucumber-report.html'
+                    cucumber 'target/cucumber-reports/cucumber.json'
+                }
+                success {
+                    archiveArtifacts artifacts: 'target/cucumber-report.html', fingerprint: true
                 }
             }
         }
